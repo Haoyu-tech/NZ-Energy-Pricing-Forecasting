@@ -1,0 +1,27 @@
+# NZEM electricity spot price forecasting — project configuration
+# All paths are relative to the project root (electricity_price_forecasting/)
+
+data:
+  node: "BEN2201"          # Selected pricing node (BEN2201 = Benmore, South Island hydro hub; OTA2201 = Otahuhu, North Island load centre)
+  start: "2023-01-01"
+  end: "2023-12-31"
+  freq_raw: "30min"        # EMI native granularity: half-hourly
+  use_synthetic: false     # false = pull real EMI final energy prices (~120 MB on first run, then cached); true = use the built-in synthetic generator
+  raw_path: "02_data/raw"
+  processed_path: "02_data/processed"
+
+modeling:
+  target_freq: "D"         # Modelling granularity: D = daily mean price (SARIMAX-friendly, fast). Set "30min" for half-hourly where LightGBM shines
+  test_days: 90            # Hold out the last N points for out-of-sample backtesting
+  cv_splits: 4             # Number of walk-forward expanding-window CV folds
+  seasonal_period: 7       # Seasonal period: 7 (weekly) at daily granularity, 48 (intraday) at half-hourly
+
+features:
+  lags: [1, 2, 3, 7, 14]       # Lag terms
+  rolling_windows: [7, 14, 30] # Rolling-statistic windows
+
+output:
+  figures: "outputs/figures"
+  reports: "outputs/reports"
+
+seed: 42

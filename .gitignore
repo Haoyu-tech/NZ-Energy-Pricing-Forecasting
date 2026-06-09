@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# Data — downloaded/cached EMI files and processed datasets are not versioned
+# (the pipeline regenerates them; the EMI cache alone is ~120 MB)
+02_data/raw/
+02_data/processed/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Note: outputs/figures/*.png and outputs/reports/report.md ARE committed
+# on purpose, so the results are visible on GitHub without running the pipeline.
