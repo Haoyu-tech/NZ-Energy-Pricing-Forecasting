@@ -1,5 +1,7 @@
 # NZEM Spot Price Forecasting
 
+[Reproduction guide](docs/REPRODUCIBILITY.md) · [Code and artifact map](docs/REPOSITORY_MAP.md)
+
 End-to-end forecasting of New Zealand Electricity Market (NZEM) half-hourly spot
 prices, using **real final energy prices** published by the **Electricity Authority** via
 the **EMI** platform ([emi.ea.govt.nz](https://www.emi.ea.govt.nz)).
